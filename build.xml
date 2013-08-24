@@ -80,6 +80,7 @@
 
     <!-- Create DB file -->
     <target name="db-create" unless="db.present">
+        <mkdir dir="scratch" />
         <echo message="Creating pollingbot.db database..." />
         <exec executable="/usr/bin/sqlite3" input="pollingbot.sql" >
             <arg value="scratch/pollingbot.db" />

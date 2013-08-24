@@ -71,7 +71,7 @@ public class PotentialPollMatchCriteria extends BaseMatchCriteria {
                                             "INFO Found suggestions thread");
                                 String url = thing.getUrl();
                                 _bot.sendComment( submission, 
-                                    "Potential poll comment in:  \n\n" +
+                                    "Potential poll comment in " +
                                     "/r/" + thing.getSubreddit() + "  \n\n" +
                                     "----\n" + 
                                     (url == null ? 

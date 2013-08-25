@@ -62,6 +62,12 @@ public class PollRequestMatchCriteria extends BaseMatchCriteria {
         //
         Object lock = PersistenceUtils.getDatabaseLock();
         synchronized(lock) {
+            
+            if(PersistenceUtils.isBotReplied(thing.getId())) {
+                BotKernel.getBotKernel().log(
+                        "FINEST Already handled request:\n" + thing);
+                return false;
+            }
 
             if(thing.getCreatedDate().before(_bot.getReplyAfterDate())) {
                 //
@@ -260,6 +266,12 @@ public class PollRequestMatchCriteria extends BaseMatchCriteria {
                                                 subredditStat.getCount()+1);
                                 subredditStat.setLastActivity(new Date());
                             }
+
+                            PersistenceUtils.setBotReplied(thing.getId());
+            
+                            _bot.sendComment(
+                                    thing, 
+                                    "Your poll has been created.");
                         }
 
                     } catch(IOException ioe) {

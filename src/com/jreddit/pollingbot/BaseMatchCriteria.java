@@ -38,14 +38,14 @@ public abstract class BaseMatchCriteria implements CrawlerMatchCriteria {
         if(thing instanceof Comment) {
             Comment comment = (Comment)thing;
             if(comment.getBody() != null) {
-                body = ((Comment)comment).getBody().toLowerCase();
+                body = ((Comment)comment).getBody();
             }
         }
 
         if(thing instanceof Submission) {
             Submission submission = (Submission)thing;
             if( submission.isSelfPost() && submission.getSelftext() != null) {
-                body = submission.getSelftext().toLowerCase();
+                body = submission.getSelftext();
             }
         }
 

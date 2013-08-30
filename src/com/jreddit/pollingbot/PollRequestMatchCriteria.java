@@ -281,7 +281,7 @@ public class PollRequestMatchCriteria extends BaseMatchCriteria {
                 }
             } else {
                 // BotKernel.getBotKernel().log("INFO no match in body: \n" +
-                //    body);
+                // body);
             }
         }
 

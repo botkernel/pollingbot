@@ -205,11 +205,11 @@ public class PollingBot extends BaseBot implements Bot, CrawlerListener {
         //
         // Add test crawler
         //
-        crawler = CrawlerFactory.getCrawler(CrawlerFactory.TEST_CRAWLER);
-        crawler.addMatchCriteria(_suggestCriteria);
-        crawler.addListener(this);
-        BotKernel.getBotKernel().addCrawler(crawler);
-        crawler.wake();
+        // crawler = CrawlerFactory.getCrawler(CrawlerFactory.TEST_CRAWLER);
+        // crawler.addMatchCriteria(_suggestCriteria);
+        // crawler.addListener(this);
+        // BotKernel.getBotKernel().addCrawler(crawler);
+        // crawler.wake();
  
     }
 
@@ -262,7 +262,8 @@ public class PollingBot extends BaseBot implements Bot, CrawlerListener {
             } catch (IOException ioe) {
                 ioe.printStackTrace();
                 log("Error cannot connect.");
-                return;
+                sleep(SLEEP);
+                continue;
             }
 
             //
@@ -534,7 +535,7 @@ public class PollingBot extends BaseBot implements Bot, CrawlerListener {
             // Convert to increments of 5%
             iPercent = iPercent / 5;
            
-            sb.append("" + ((char)('A'+i)) + ". ");
+            sb.append("    " + ((char)('A'+i)) + ". ");
             for(int j = 0; j < 20; j++) {
                 if(j < iPercent) {
                     sb.append(BAR);
@@ -542,7 +543,10 @@ public class PollingBot extends BaseBot implements Bot, CrawlerListener {
                     sb.append(SPACE);
                 }
             }
-            sb.append(" (" + percent + "%, " + votes + " votes)  \n");
+            sb.append("  " +
+                String.format("%6.2f", percent) + "%  " +
+                String.format("%4d", votes) + " votes  \n" );
+
         }
 
         //
@@ -571,7 +575,7 @@ public class PollingBot extends BaseBot implements Bot, CrawlerListener {
      *
      */
     private static final String BOT_SIG = 
-                "[Home](/r/PollingBot) | " +
+                "[Create a Poll](/r/PollingBot) | " +
                 "[FAQ](http://www.reddit.com/r/PollingBot/wiki/faq) | " +
                 "[Contact My Human](http://www.reddit.com/message/compose/?to=BlackjackPitboss)    ";
 

@@ -72,7 +72,8 @@ public class PotentialPollMatchCriteria extends BaseMatchCriteria {
                                 String url = thing.getUrl();
                                 _bot.sendComment( submission, 
                                     "Potential poll comment in " +
-                                    "/r/" + thing.getSubreddit() + "  \n\n" +
+                                    "/r/" + thing.getSubreddit() + " " +
+                                    thing.getCreatedDate() + "  \n\n" +
                                     "----\n" + 
                                     (url == null ? 
                                         submission.getUrl() : url) + "  \n\n" +

@@ -195,12 +195,12 @@ public class PollingBot extends BaseBot implements Bot, CrawlerListener {
         //
         // Add the default crawler for finding potential polls
         //
-        Crawler crawler = 
-                    CrawlerFactory.getCrawler(CrawlerFactory.DEFAULT_CRAWLER);
-        crawler.addMatchCriteria(_suggestCriteria);
-        crawler.addListener(this);
-        BotKernel.getBotKernel().addCrawler(crawler);
-        crawler.wake();
+        // Crawler crawler = 
+        //            CrawlerFactory.getCrawler(CrawlerFactory.DEFAULT_CRAWLER);
+        // crawler.addMatchCriteria(_suggestCriteria);
+        // crawler.addListener(this);
+        // BotKernel.getBotKernel().addCrawler(crawler);
+        // crawler.wake();
 
         //
         // Add test crawler
